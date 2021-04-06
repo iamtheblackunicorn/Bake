@@ -7,7 +7,6 @@ import 'dart:io';
 import 'package:termstyle/termstyle.dart';
 import 'package:clibu/clibu.dart';
 
-
 /// Displays versioning information.
 void versionInfo(){
   String unicornHead = getEmoji('unicornHead');
@@ -59,17 +58,36 @@ List<String> getMatches(String arguments){
     RegExp pattern = patterns()[key] as RegExp;
     assert(pattern is RegExp);
     if (pattern.hasMatch(arguments) == true){
-      Iterable<Match> matches = pattern.allMatches(arguments) as Iterable<Match>;
-      assert(matches is Iterable<Match>);
-      Match myMatch = matches.elementAt(0);
-      String firstArg = myMatch.group(1) as String;
-      assert(firstArg is String);
-      String secondArg = myMatch.group(2) as String;
-      assert(secondArg is String);
-      result.add(firstArg);
-      result.add(secondArg);
-    } else if (key == 'COMMENT') {}
+      if (key == 'COMMENT'){}
+      else if (arguments == '\n'){}
+      else {
+        Iterable<Match> matches = pattern.allMatches(arguments) as Iterable<Match>;
+        assert(matches is Iterable<Match>);
+        Match myMatch = matches.elementAt(0);
+        String firstArg = myMatch.group(1) as String;
+        assert(firstArg is String);
+        String secondArg = myMatch.group(2) as String;
+        assert(secondArg is String);
+        result.add(firstArg);
+        result.add(secondArg);
+      }
+    }
     else {}
+  }
+  return result;
+}
+
+bool ruleExists(String fileContents, String rule){
+  bool result = false;
+  List<String> fileC = fileContents.split('\n');
+  for (int i = 0; i < fileC.length; i++) {
+    String line = fileC[i];
+    List<String> ruleTup = getMatches(line);
+    if (ruleTup.length == 2){
+      if (ruleTup[0] == rule) {
+        result = true;
+      } else {}
+    } else {}
   }
   return result;
 }
@@ -78,12 +96,18 @@ List<String> getMatches(String arguments){
 void execFirstRule(String fileContents){
   List<String> fileC = fileContents.split('\n');
   for (int i = 0; i < fileC.length; i++) {
-    if (i == 0){
-      String args = fileC[0];
-      try {
-        runCommand(getMatches(args)[1]);
-      } catch(e) {
-        printColoredString('$e', 'red');
+    String args = fileC[i];
+    List<String> ruleTup = getMatches(args);
+    if (ruleTup.length == 2 && i == 0) {
+      String rule = ruleTup[0];
+      String ruleCommand = ruleTup[1];
+      if (ruleExists(fileContents, rule) == true) {
+        try {
+          runCommand(ruleCommand);
+        } catch(e) {
+          print('ERROR!');
+        }
+      } else {
       }
     } else {}
   }
@@ -96,16 +120,21 @@ void execFirstRule(String fileContents){
 void execRule(String fileContents, String rule){
   List<String> fileC = fileContents.split('\n');
   for (int i = 0; i < fileC.length; i++) {
-    String args = fileC[0];
+    String args = fileC[i];
     List<String> ruleTup = getMatches(args);
-    String ruleName = ruleTup[0];
-    if (rule == ruleName) {
-      try {
-        runCommand(ruleTup[1]);
-      } catch(e) {
-        printColoredString('$e', 'red');
+    if (ruleTup.length == 2) {
+      String ruleName = ruleTup[0];
+      String ruleCommand = ruleTup[1];
+      if (ruleExists(fileContents,ruleName) == true) {
+        if (ruleName == rule) {
+          try {
+            runCommand(ruleCommand);
+          } catch(e) {
+            print('ERROR!');
+          }
+        } else {}
+      } else {
       }
-      break;
     } else {}
   }
 }
