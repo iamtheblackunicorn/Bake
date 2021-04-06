@@ -1,6 +1,6 @@
 # BAKE :baguette_bread:
 
-*Build your projects with simple rules.* baguette_bread:
+*Build your projects with simple rules.* :baguette_bread:
 
 ## About :books:
 
