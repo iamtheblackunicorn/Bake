@@ -5,3 +5,4 @@
 - initial upload to GitHub
 - initial release
 - polishing of the logic
+- perfected and tested!

@@ -1,5 +1,7 @@
 # BAKE :baguette_bread:
 
+[![Build Status](https://travis-ci.com/iamtheblackunicorn/Bake.svg?branch=main)](https://travis-ci.com/iamtheblackunicorn/Bake)
+
 *Build your projects with simple rules.* :baguette_bread:
 
 ## About :books:

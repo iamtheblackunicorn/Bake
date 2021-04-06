@@ -77,6 +77,7 @@ List<String> getMatches(String arguments){
   return result;
 }
 
+// This method asserts whether a rule exists in a Bakefile!
 bool ruleExists(String fileContents, String rule){
   bool result = false;
   List<String> fileC = fileContents.split('\n');
@@ -96,19 +97,16 @@ bool ruleExists(String fileContents, String rule){
 void execFirstRule(String fileContents){
   List<String> fileC = fileContents.split('\n');
   for (int i = 0; i < fileC.length; i++) {
-    String args = fileC[i];
-    List<String> ruleTup = getMatches(args);
-    if (ruleTup.length == 2 && i == 0) {
-      String rule = ruleTup[0];
-      String ruleCommand = ruleTup[1];
-      if (ruleExists(fileContents, rule) == true) {
+    if (i == 0) {
+      String args = fileC[i];
+      List<String> ruleTup = getMatches(args);
+      if (ruleTup.length == 2) {
         try {
-          runCommand(ruleCommand);
-        } catch(e) {
-          print('ERROR!');
+          runCommand(ruleTup[1]);
+        } catch (e) {
+          printColoredString('$e', 'red');
         }
-      } else {
-      }
+      } else {}
     } else {}
   }
 }
@@ -125,15 +123,17 @@ void execRule(String fileContents, String rule){
     if (ruleTup.length == 2) {
       String ruleName = ruleTup[0];
       String ruleCommand = ruleTup[1];
-      if (ruleExists(fileContents,ruleName) == true) {
+      if (ruleExists(fileContents,rule) == true) {
         if (ruleName == rule) {
           try {
             runCommand(ruleCommand);
           } catch(e) {
-            print('ERROR!');
+            printColoredString('$e', 'red');
           }
         } else {}
       } else {
+        printColoredString('Rule "$rule" not found!', 'red');
+        break;
       }
     } else {}
   }
