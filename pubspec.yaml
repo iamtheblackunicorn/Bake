@@ -1,0 +1,11 @@
+name: bake
+description: Build your projects with simple rules.
+version: 1.0.0
+homepage: https://github.com/iamtheblackunicorn/Bake
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+dependencies:
+  clibu: ^1.3.0-nullsafety.0
+  termstyle: ^1.3.0-nullsafety.0
+dev_dependencies:
+  pedantic: ^1.11.0

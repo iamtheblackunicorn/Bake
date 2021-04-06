@@ -1,0 +1,4 @@
+// This is a comment!
+
+'build' => 'echo Hello World!'
+'greet' => 'echo My name is Alex!'

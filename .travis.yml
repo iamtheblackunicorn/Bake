@@ -1,0 +1,13 @@
+language:
+  - "dart"
+script:
+  - "dart pub get"
+  - "make build"
+  - "cp -f example/Bakefile dist"
+  - "cd dist"
+  - "chmod a+x bake"
+  - "./bake --version"
+  - "./bake --help"
+  - "./bake"
+  - "./bake greet"
+  - "./bake build"
