@@ -1,5 +1,7 @@
 # BAKE :baguette_bread:
 
+*Build your projects with simple rules.* baguette_bread:
+
 ## About :books:
 
 I think that Makefile is a very usefule project because it allows users to implement a simple way to define rules for building their projects across platforms. Bake is like Make but takes a simpler approach and is a Dart project! ;)
