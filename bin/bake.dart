@@ -34,7 +34,7 @@ void helpInfo() {
 bool fileExists(String filePath) {
   bool result = false;
   try {
-    String contents = File(filePath).readAsStringSync();
+    File(filePath).readAsStringSync();
     result = true;
   } catch (e) {
     printColoredString('File does not exist!', 'red');
@@ -63,7 +63,7 @@ List<String> getMatches(String arguments) {
       } else if (arguments == '\n') {
       } else {
         Iterable<Match> matches =
-            pattern.allMatches(arguments) as Iterable<Match>;
+            pattern.allMatches(arguments);
         assert(matches is Iterable<Match>);
         Match myMatch = matches.elementAt(0);
         String firstArg = myMatch.group(1) as String;
