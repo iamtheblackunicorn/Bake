@@ -2,6 +2,7 @@ language:
   - "dart"
 script:
   - "dart pub get"
+  - "dart analyze ."
   - "make build"
   - "cp -f example/Bakefile dist"
   - "cd dist"

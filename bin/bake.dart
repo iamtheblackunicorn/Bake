@@ -8,60 +8,62 @@ import 'package:termstyle/termstyle.dart';
 import 'package:clibu/clibu.dart';
 
 /// Displays versioning information.
-void versionInfo(){
+void versionInfo() {
   String unicornHead = getEmoji('unicornHead');
   String blackHeart = getEmoji('blackHeart');
   String color = 'green';
   String lineOne = 'Bake v.1.0.0';
-  String lineTwo = 'by Alexander Abraham $blackHeart, the Black Unicorn $unicornHead';
+  String lineTwo =
+      'by Alexander Abraham $blackHeart, the Black Unicorn $unicornHead';
   String lineThree = 'licensed under the MIT license';
   printColoredString('\n$lineOne\n$lineTwo\n$lineThree\n', color);
 }
 
 /// Displays help information.
-void helpInfo(){
+void helpInfo() {
   String bakeHelp = 'bake             executes the first rule of a Bakefile';
   String ruleHelp = 'bake <yourRule>  executes the rule of the given name';
   String versionHelp = 'bake --version   displays version info';
   String helpHelp = 'bake --help      displays this help message';
   String color = 'cyan';
-  printColoredString('\n$bakeHelp\n$ruleHelp\n$versionHelp\n$helpHelp\n', color);
+  printColoredString(
+      '\n$bakeHelp\n$ruleHelp\n$versionHelp\n$helpHelp\n', color);
 }
 
 /// Checks whether a file exists or not.
-bool fileExists(String filePath){
+bool fileExists(String filePath) {
   bool result = false;
   try {
     String contents = File(filePath).readAsStringSync();
     result = true;
-  } catch(e) {
+  } catch (e) {
     printColoredString('File does not exist!', 'red');
   }
   return result;
 }
 
 /// Holds all the grammar patterns of Bake.
-Map<String, RegExp> patterns(){
+Map<String, RegExp> patterns() {
   Map<String, RegExp> patterns = {
-    'RULE':RegExp(r"'(.*)'\s=>\s'(.*)'"),
-    'COMMENT':RegExp(r'(\/\/.*)')
+    'RULE': RegExp(r"'(.*)'\s=>\s'(.*)'"),
+    'COMMENT': RegExp(r'(\/\/.*)')
   };
   return patterns;
 }
 
-
 /// Returns a list of all the matched tokens from a "Bakefile".
-List<String> getMatches(String arguments){
+List<String> getMatches(String arguments) {
   List<String> result = [];
-  for (int i = 0; i < patterns().length; i++){
+  for (int i = 0; i < patterns().length; i++) {
     String key = patterns().keys.elementAt(i);
     RegExp pattern = patterns()[key] as RegExp;
     assert(pattern is RegExp);
-    if (pattern.hasMatch(arguments) == true){
-      if (key == 'COMMENT'){}
-      else if (arguments == '\n'){}
-      else {
-        Iterable<Match> matches = pattern.allMatches(arguments) as Iterable<Match>;
+    if (pattern.hasMatch(arguments) == true) {
+      if (key == 'COMMENT') {
+      } else if (arguments == '\n') {
+      } else {
+        Iterable<Match> matches =
+            pattern.allMatches(arguments) as Iterable<Match>;
         assert(matches is Iterable<Match>);
         Match myMatch = matches.elementAt(0);
         String firstArg = myMatch.group(1) as String;
@@ -71,20 +73,19 @@ List<String> getMatches(String arguments){
         result.add(firstArg);
         result.add(secondArg);
       }
-    }
-    else {}
+    } else {}
   }
   return result;
 }
 
 // This method asserts whether a rule exists in a Bakefile!
-bool ruleExists(String fileContents, String rule){
+bool ruleExists(String fileContents, String rule) {
   bool result = false;
   List<String> fileC = fileContents.split('\n');
   for (int i = 0; i < fileC.length; i++) {
     String line = fileC[i];
     List<String> ruleTup = getMatches(line);
-    if (ruleTup.length == 2){
+    if (ruleTup.length == 2) {
       if (ruleTup[0] == rule) {
         result = true;
       } else {}
@@ -94,7 +95,7 @@ bool ruleExists(String fileContents, String rule){
 }
 
 /// Only executes the first rule of a "Bakefile".
-void execFirstRule(String fileContents){
+void execFirstRule(String fileContents) {
   List<String> fileC = fileContents.split('\n');
   for (int i = 0; i < fileC.length; i++) {
     if (i == 0) {
@@ -103,7 +104,7 @@ void execFirstRule(String fileContents){
       if (ruleTup.length == 2) {
         try {
           runCommand(ruleTup[1]);
-        } catch (e) {
+        } on ProcessException catch (e) {
           printColoredString('$e', 'red');
         }
       } else {}
@@ -111,11 +112,10 @@ void execFirstRule(String fileContents){
   }
 }
 
-
 /// Executes any rule of a "Bakefile".
 /// Which rule is executed is determined by
 /// the second parameter.
-void execRule(String fileContents, String rule){
+void execRule(String fileContents, String rule) {
   List<String> fileC = fileContents.split('\n');
   for (int i = 0; i < fileC.length; i++) {
     String args = fileC[i];
@@ -123,11 +123,11 @@ void execRule(String fileContents, String rule){
     if (ruleTup.length == 2) {
       String ruleName = ruleTup[0];
       String ruleCommand = ruleTup[1];
-      if (ruleExists(fileContents,rule) == true) {
+      if (ruleExists(fileContents, rule) == true) {
         if (ruleName == rule) {
           try {
             runCommand(ruleCommand);
-          } catch(e) {
+          } on ProcessException catch (e) {
             printColoredString('$e', 'red');
           }
         } else {}
@@ -138,7 +138,6 @@ void execRule(String fileContents, String rule){
     } else {}
   }
 }
-
 
 /// Returns the contents of a file as a string.
 String getFileContens() {
@@ -152,38 +151,32 @@ String getFileContens() {
   return result;
 }
 
-
 /// This method is the main command-line
 /// interface of Bake.
-void cliApp(List<String> arguments){
+void cliApp(List<String> arguments) {
   int argLength = arguments.length;
   if (argLength == 0) {
     String fileContents = getFileContens();
     execFirstRule(fileContents);
-  }
-  else if (argLength == 1) {
+  } else if (argLength == 1) {
     if (arguments[0] == '--version') {
       versionInfo();
-    }
-    else if (arguments[0] == '--help') {
+    } else if (arguments[0] == '--help') {
       helpInfo();
-    }
-    else {
+    } else {
       try {
         String fileContents = getFileContens();
         execRule(fileContents, arguments[0]);
-      } catch(e) {
+      } catch (e) {
         printColoredString('$e', 'red');
       }
     }
-  }
-  else {
+  } else {
     printColoredString('No valid options provided!', 'red');
   }
 }
 
-
 /// This is the entry point for the Dart VM.
-void main(List<String> arguments){
+void main(List<String> arguments) {
   cliApp(arguments);
 }
