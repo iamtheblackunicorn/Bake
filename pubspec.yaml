@@ -5,7 +5,8 @@ homepage: https://github.com/iamtheblackunicorn/Bake
 environment:
   sdk: '>=2.12.0 <3.0.0'
 dependencies:
-  clibu: ^1.3.0-nullsafety.0
+  clibu:
+    git: git://github.com/iamtheblackunicorn/cli.git
   termstyle: ^1.3.0-nullsafety.0
 dev_dependencies:
   pedantic: ^1.11.0
