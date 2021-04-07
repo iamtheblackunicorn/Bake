@@ -19,7 +19,7 @@ void versionInfo() {
   String lineTwo =
       'by Alexander Abraham $blackHeart, the Black Unicorn $unicornHead';
   String lineThree = 'licensed under the MIT license';
-  printColoredString('\n$lineOne\n$lineTwo\n$lineThree\n', color);
+  printColoredString('\n$lineOne\n$lineTwo\n$lineThree\n', '$color');
 }
 
 /// Displays help information.
@@ -31,7 +31,7 @@ void helpInfo() {
   String helpHelp = 'bake --help      displays this help message';
   String color = 'cyan';
   printColoredString(
-      '\n$bakeHelp\n$initHelp\n$ruleHelp\n$versionHelp\n$helpHelp\n', color);
+      '\n$bakeHelp\n$initHelp\n$ruleHelp\n$versionHelp\n$helpHelp\n', '$color');
 }
 
 /// Checks whether a file exists or not.
