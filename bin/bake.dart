@@ -7,6 +7,9 @@ import 'dart:io';
 import 'package:termstyle/termstyle.dart';
 import 'package:clibu/clibu.dart';
 
+/// Defines which filenames are permitted.
+String ruleFile = 'Bakefile';
+
 /// Displays versioning information.
 void versionInfo() {
   String unicornHead = getEmoji('unicornHead');
@@ -139,10 +142,26 @@ void execRule(String fileContents, String rule) {
   }
 }
 
+/// This method creates a standard Bakefile.
+void initBakery(){
+  List<String> lines = [
+    '// A standard build rule, customize this!',
+    "'build' => 'echo My project!'",
+    '// A standard testing rule, customize this!',
+    "'test' => 'echo I am there for testing.'"
+  ];
+  String fileContents = lines.join('\n');
+  try {
+    printColoredString('Scaffolding "$ruleFile"...', 'cyan');
+    File(ruleFile).writeAsStringSync(fileContents);
+  } catch (e) {
+    printColoredString('$e', 'red');
+  }
+}
+
 /// Returns the contents of a file as a string.
 String getFileContens() {
   String result = '';
-  String ruleFile = 'Bakefile';
   if (fileExists(ruleFile) == true) {
     result = File(ruleFile).readAsStringSync();
   } else {
@@ -163,6 +182,8 @@ void cliApp(List<String> arguments) {
       versionInfo();
     } else if (arguments[0] == '--help') {
       helpInfo();
+    } else if (arguments[0] == 'init') {
+      initBakery();
     } else {
       try {
         String fileContents = getFileContens();

@@ -16,3 +16,6 @@ script:
   - "rm -rf Bakefile"
   - "./bake"
   - "./bake I am a clown!"
+  - "./bake init"
+  - "./bake build"
+  - "./bake test"
