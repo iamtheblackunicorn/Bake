@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/iamtheblackunicorn/Bake.svg?branch=main)](https://travis-ci.com/iamtheblackunicorn/Bake)
 
-*Build your projects with simple rules.* :baguette_bread:
+*Build your projects with simple rules across platforms.* :baguette_bread:
 
 ## About :books:
 
