@@ -2,7 +2,7 @@
 
 ## Version 1.0.0: Initial release
 
-- initial upload to GitHub
-- initial release
-- polishing of the logic
-- perfected and tested!
+- Initial upload to GitHub.
+- Initial release.
+- Polishing of the logic
+- Perfected and tested!
