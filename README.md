@@ -82,7 +82,7 @@ $ touch Bakefile
 'greet' => 'echo Hello World!'
 ```
 
-- 3.) Run the command `bake` or `bake greet` in the directory where just created the file:
+- 3.) Run the command `bake` or `bake greet` in the directory where you just created the file:
 
 ```bash
 Hello World! # This should be the output!
