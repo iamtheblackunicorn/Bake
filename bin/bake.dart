@@ -24,13 +24,14 @@ void versionInfo() {
 
 /// Displays help information.
 void helpInfo() {
-  String bakeHelp = 'bake             executes the first rule of a Bakefile';
+  String bakeHelp = 'bake             executes the first rule of a $ruleFile';
+  String initHelp = 'bake init        creates a $ruleFile with pre-defined rules';
   String ruleHelp = 'bake <yourRule>  executes the rule of the given name';
   String versionHelp = 'bake --version   displays version info';
   String helpHelp = 'bake --help      displays this help message';
   String color = 'cyan';
   printColoredString(
-      '\n$bakeHelp\n$ruleHelp\n$versionHelp\n$helpHelp\n', color);
+      '\n$bakeHelp\n$initHelp\n$ruleHelp\n$versionHelp\n$helpHelp\n', color);
 }
 
 /// Checks whether a file exists or not.
