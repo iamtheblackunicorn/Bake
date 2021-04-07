@@ -11,7 +11,7 @@ script:
   - "./bake"
   - "./bake greet"
   - "./bake build"
-  - "./bake test"
+  - "./bake some"
   - "./bake rofl"
   - "rm -rf Bakefile"
   - "./bake"
