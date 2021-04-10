@@ -8,6 +8,38 @@
 
 I think that Makefile is a very usefule project because it allows users to implement a simple way to define rules for building their projects across platforms. Bake is like Make but takes a simpler approach and is a Dart project! ;)
 
+## Using the library :pick:
+
+### Installation
+
+#### From Pub.dev
+
+Add the library to your `pubspec.yaml` by adding this to it:
+
+```YAML
+dependencies:
+  ...
+  bake: ^2.0.0
+```
+
+#### From GitHub
+
+Add the library to your `pubspec.yaml` by adding this to it:
+
+```YAML
+dependencies:
+  bake:
+    git: git://github.com/iamtheblackunicorn/Bake.git
+```
+
+### Importing the API
+
+Import the API like this:
+
+```dart
+import 'package:bake/bake.dart';
+```
+
 ## Building :hammer_and_pick:
 
 ### Prerequisites

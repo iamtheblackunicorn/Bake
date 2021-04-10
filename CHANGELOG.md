@@ -6,3 +6,8 @@
 - Initial release.
 - Polishing of the logic
 - Perfected and tested!
+
+## Version 2.0.0: Library release
+
+- turned *Bake* into a library
+- upload to pub.dev
