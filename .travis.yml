@@ -5,6 +5,7 @@ script:
   # General setup
   # and code-analysis.
 
+  - "echo \n\nSECTION 0\n\n"
   - "dart pub get"
   - "dart analyze ."
   - "make build"
@@ -12,6 +13,7 @@ script:
   # Test all command-line
   # parameters for the "bin" directory.
 
+  - "echo \n\nSECTION 1\n\n"
   - "cp -f exampleFile/Bakefile dist"
   - "cd dist"
   - "chmod a+x bake"
@@ -30,6 +32,7 @@ script:
 
   # Test all command-line
   # parameters for the "example" directory.
+  - "echo \n\nSECTION 3\n\n"
   - "cd .."
   - "cp -f exampleFile/Bakefile example"
   - "cd example"
