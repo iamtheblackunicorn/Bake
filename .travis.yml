@@ -30,7 +30,7 @@ script:
 
   # Test all command-line
   # parameters for the "example" directory.
-
+  - "cd .."
   - "cp -f exampleFile/Bakefile example"
   - "cd example"
   - "dart run lib/main.dart --version"
