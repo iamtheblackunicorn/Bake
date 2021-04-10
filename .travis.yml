@@ -4,16 +4,11 @@ script:
 
   # General setup
   # and code-analysis.
-
-  - "echo \n\nSECTION 0\n\n"
   - "dart pub get"
   - "dart analyze ."
   - "make build"
-
   # Test all command-line
   # parameters for the "bin" directory.
-
-  - "echo \n\nSECTION 1\n\n"
   - "cp -f exampleFile/Bakefile dist"
   - "cd dist"
   - "chmod a+x bake"
@@ -29,12 +24,19 @@ script:
   - "./bake init"
   - "./bake build"
   - "./bake test"
-
   # Test all command-line
   # parameters for the "example" directory.
-  - "echo \n\nSECTION 3\n\n"
   - "cd .."
   - "cp -f exampleFile/Bakefile example"
   - "cd example"
   - "dart run lib/main.dart --version"
   - "dart run lib/main.dart --help"
+  - "dart run lib/main.dart"
+  - "dart run lib/main.dart greet"
+  - "dart run lib/main.dart build"
+  - "dart run lib/main.dart rofl"
+  - "rm -rf Bakefile"
+  - "dart run lib/main.dart I am a clown!"
+  - "dart run lib/main.dart init"
+  - "dart run lib/main.dart build"
+  - "dart run lib/main.dart test"
