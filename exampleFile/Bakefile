@@ -1,0 +1,3 @@
+'build' => 'echo Hello World!'
+'greet' => 'echo My name is Alex!'
+// This is a comment.

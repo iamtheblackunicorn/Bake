@@ -1,10 +1,18 @@
 language:
   - "dart"
 script:
+
+  # General setup
+  # and code-analysis.
+
   - "dart pub get"
   - "dart analyze ."
   - "make build"
-  - "cp -f example/Bakefile dist"
+
+  # Test all command-line
+  # parameters for the "bin" directory.
+
+  - "cp -f exampleFile/Bakefile dist"
   - "cd dist"
   - "chmod a+x bake"
   - "./bake --version"
@@ -19,3 +27,11 @@ script:
   - "./bake init"
   - "./bake build"
   - "./bake test"
+
+  # Test all command-line
+  # parameters for the "example" directory.
+
+  - "cp -f exampleFile/Bakefile example"
+  - "cd example"
+  - "dart run lib/main.dart --version"
+  - "dart run lib/main.dart --help"
