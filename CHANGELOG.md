@@ -11,3 +11,8 @@
 
 - turned *Bake* into a library
 - upload to pub.dev
+
+## Version 2.1.0: The Nicety Update
+
+- cleaner code
+- better package description

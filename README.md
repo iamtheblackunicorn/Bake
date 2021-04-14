@@ -19,7 +19,7 @@ Add the library to your `pubspec.yaml` by adding this to it:
 ```YAML
 dependencies:
   ...
-  bake: ^2.0.0
+  bake: ^2.1.0
 ```
 
 #### From GitHub

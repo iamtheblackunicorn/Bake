@@ -1,6 +1,6 @@
 name: bake
-description: Build your projects with simple rules.
-version: 2.0.0
+description: Build your projects with simple rules across platforms. This project is heavily inspired by the GNU Make project!
+version: 2.1.0
 homepage: https://github.com/iamtheblackunicorn/Bake
 environment:
   sdk: '>=2.12.0 <3.0.0'

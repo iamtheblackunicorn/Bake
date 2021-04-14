@@ -25,7 +25,8 @@ void versionInfo() {
 /// Displays help information.
 void helpInfo() {
   String bakeHelp = 'bake             executes the first rule of a $ruleFile';
-  String initHelp = 'bake init        creates a $ruleFile with pre-defined rules';
+  String initHelp =
+      'bake init        creates a $ruleFile with pre-defined rules';
   String ruleHelp = 'bake <yourRule>  executes the rule of the given name';
   String versionHelp = 'bake --version   displays version info';
   String helpHelp = 'bake --help      displays this help message';
@@ -66,8 +67,7 @@ List<String> getMatches(String arguments) {
       if (key == 'COMMENT') {
       } else if (arguments == '\n') {
       } else {
-        Iterable<Match> matches =
-            pattern.allMatches(arguments);
+        Iterable<Match> matches = pattern.allMatches(arguments);
         assert(matches is Iterable<Match>);
         Match myMatch = matches.elementAt(0);
         String firstArg = myMatch.group(1) as String;
@@ -144,7 +144,7 @@ void execRule(String fileContents, String rule) {
 }
 
 /// This method creates a standard Bakefile.
-void initBakery(){
+void initBakery() {
   List<String> lines = [
     '// A standard build rule, customize this!',
     "'build' => 'echo My project!'",
