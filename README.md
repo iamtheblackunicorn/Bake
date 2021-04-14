@@ -153,5 +153,5 @@ Please click [here](CHANGELOG.md).
 
 ## Note :scroll:
 
-- *Bake* :baguette_bread: by Alexander Abraham :black_heart:, the Black Unicorn :unicorn:
-- licensed under the MIT license
+- *Bake :baguette_bread:* by Alexander Abraham :black_heart: a.k.a. *"The Black Unicorn" :unicorn:*
+- Licensed under the MIT license.
