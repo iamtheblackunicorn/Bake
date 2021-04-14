@@ -6,7 +6,7 @@
 
 ## About :books:
 
-I think that Makefile is a very usefule project because it allows users to implement a simple way to define rules for building their projects across platforms. Bake is like Make but takes a simpler approach and is a Dart project! ;)
+I think that Makefile is a very useful project because it allows users to implement a simple way to define rules for building their projects across platforms. Bake is like Make but takes a simpler approach and is a Dart project! ;)
 
 ## Using the library :pick:
 
@@ -57,7 +57,7 @@ Make sure you have the following programmes installed:
 $ git clone https://github.com/iamtheblackunicorn/Bake.git
 ```
 
-- 2.) Change into source directory's root:
+- 2.) Change into the source directory's root:
 
 ```bash
 $ cd Bake
