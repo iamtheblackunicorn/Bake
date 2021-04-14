@@ -91,7 +91,7 @@ Add this line to the dialog that appears:
 C:\blackunicorn\bin
 ```
 
-Save that and quit the System settings. After having done that, go to the File Explorer and create a directory called `blackunicorn` in `C:\` and in `blackunicorn` a directory called `bin`.
+Save that and quit the "System Settings". After having done that, go to the File Explorer and create a directory called `blackunicorn` in `C:\` and in `blackunicorn` a directory called `bin`.
 
 ### Finally
 
