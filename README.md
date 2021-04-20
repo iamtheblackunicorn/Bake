@@ -1,6 +1,6 @@
 # BAKE :baguette_bread:
 
-[![Build Status](https://travis-ci.com/iamtheblackunicorn/Bake.svg?branch=main)](https://travis-ci.com/iamtheblackunicorn/Bake)
+[![GitHub CI](https://github.com/iamtheblackunicorn/bake/actions/workflows/dart.yml/badge.svg)](https://github.com/iamtheblackunicorn/bake/actions)
 
 *Build your projects with simple rules across platforms.* :baguette_bread:
 
